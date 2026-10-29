@@ -1,14 +1,6 @@
 .vscode/
 uploads/
 
-# Python
-__pycache__/
-*.pyc
-backend/uploads/*
-!backend/uploads/.gitkeep
-logs/
-*.log
-
 # JS/React
 node_modules/
 dist/
