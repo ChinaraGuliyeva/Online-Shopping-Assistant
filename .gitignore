@@ -6,6 +6,12 @@ node_modules/
 dist/
 .env
 
-# AI Models
-backend/models/*.pt
-.ruff_cache/
+# .NET
+bin/
+obj/
+.vs/
+*.user
+*.suo
+*.log
+TestResults/
+publish/
