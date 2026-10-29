@@ -9,7 +9,7 @@ export const Dashboard = () => {
 					<h1 className="mb-3 main-heading">{dashBoardHeading}</h1>
 					{dashBoardText}
 				</div>
-				<div className="col-md-6 ms-5 mt-3">
+				<div className="col-md-6 ms-5 mt-4">
 					<img
 						className="dashboard-img"
 						src={girl}

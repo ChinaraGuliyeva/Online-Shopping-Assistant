@@ -1,18 +1,16 @@
 import type { JSX } from "react";
 
 export const aboutHeading = "About me";
-export const dashBoardHeading = "Online Shop Assistant";
+export const dashBoardHeading = "Online Shopping Assistant";
 
 export const dashBoardText: JSX.Element = (
 	<>
-		<p>An AI-powered project for wardrobe matching.</p>
-
 		<p>
 			Once, I bought a stunning, unique orange sweater, only to discover that it hung on me like a sack. The problem was that the model was taller than I am. Now, my goal is to help others avoid falling into such traps.
 		</p>
 
 		<p>
-			<a href="https://github.com/ChinaraGuliyeva/ai-stylist">
+			<a href="https://github.com/ChinaraGuliyeva/Online-Shopping-Assistant">
 				Project Repository{" "}
 			</a>
 			. Feel free to contact me via email at{" "}
