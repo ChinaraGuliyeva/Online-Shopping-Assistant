@@ -1,6 +1,5 @@
 import girl from "../assets/girl.jpg";
 import { dashBoardHeading, dashBoardText } from "../textConstants";
-import { UploadFileForm } from "./forms/UploadFileForm";
 
 export const Dashboard = () => {
 	return (
@@ -17,9 +16,6 @@ export const Dashboard = () => {
 						alt="female stylist in front of a board with sketches"
 					/>
 				</div>
-			</div>
-			<div className="form-wrapper">
-				<UploadFileForm />
 			</div>
 		</>
 	);

@@ -1,25 +1,14 @@
 import type { JSX } from "react";
 
 export const aboutHeading = "About me";
-export const dashBoardHeading = "AI stylist";
+export const dashBoardHeading = "Online Shop Assistant";
 
 export const dashBoardText: JSX.Element = (
 	<>
-		<p>An AI-powered project for clothing recognition and wardrobe matching.</p>
+		<p>An AI-powered project for wardrobe matching.</p>
 
 		<p>
-			This is a purely educational project with no commercial intent. The idea
-			and implementation are entirely my own. In the past, I’ve often bought
-			unusual pieces only to struggle with fitting them into my wardrobe.
-			ChatGPT actually helped me with that. At some point, I decided to look
-			into how neural networks are trained and integrated into projects. I
-			wanted to see if I could go beyond pre-set boundaries and embed my own
-			taste into a model at a deeper level than just prompting.{" "}
-		</p>
-
-		<p>
-			Having experienced both the strengths and weaknesses of AI as a user, I am
-			now excited to explore them from a developer's perspective.
+			Once, I bought a stunning, unique orange sweater, only to discover that it hung on me like a sack. The problem was that the model was taller than I am. Now, my goal is to help others avoid falling into such traps.
 		</p>
 
 		<p>
