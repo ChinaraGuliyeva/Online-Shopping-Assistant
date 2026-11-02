@@ -1,6 +1,8 @@
-namespace Infrastructure.FActories;
+namespace Infrastructure.Parsers.Factories;
+
 using Application.Interfaces;
 using Domain.Enums;
+using Domain.Interfaces;
 
 public class ParserFactory : IParserFactory
 {
