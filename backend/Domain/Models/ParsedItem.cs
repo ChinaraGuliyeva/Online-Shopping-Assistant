@@ -28,5 +28,5 @@ public class ProductVariant
     public string Size { get; set; } = string.Empty;
     public string Color { get; set; } = string.Empty;
     public bool IsInStock { get; set; }
-    public string? Sku { get; set; }
+
 }
