@@ -1,6 +1,7 @@
 namespace Application.Services;
 
 using Application.Interfaces;
+using Domain.Enums;
 
 //TO DO: Add DTO to result, ets
 public class ParsingAppService : IOutfitParsingService
@@ -12,11 +13,13 @@ public class ParsingAppService : IOutfitParsingService
         _parserFactory = parserFactory;
     }
 
-    public async Task<string> ProcessOutfitAsync(Stream imageStream, string contentType, CancellationToken ct)
+    public async Task<string> ProcessOutfitAsync(string clothUrl, CancellationToken ct)
     {
-        var strategy = _parserFactory.GetStrategy(contentType);
+        var storeSource = StoreSourceExtensions.ResolveFromUrl(clothUrl);
 
-        string rawResult = await strategy.ParseAsync(imageStream, ct);
+        var strategy = _parserFactory.GetStrategy(storeSource);
+
+        string rawResult = await strategy.ParseAsync(clothUrl, ct);
 
         return rawResult;
     }
