@@ -1,7 +1,8 @@
+using Domain.Interfaces;
+using Domain.Enums;
+
 namespace Application.Interfaces;
 
-using  Domain.Interfaces;
-using Domain.Enums;
 
 public interface IParserFactory
 {

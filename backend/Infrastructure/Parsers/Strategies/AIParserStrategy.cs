@@ -29,11 +29,11 @@
 
 //TO DO: Implement interface
 
-namespace Infrastructure.Parsers.Strategies;
-
 using Domain.Enums;
 using Domain.Interfaces;
 using Domain.Models;
+
+namespace Infrastructure.Parsers.Strategies;
 
 public class AiParserStrategy : IParserStrategy
 {

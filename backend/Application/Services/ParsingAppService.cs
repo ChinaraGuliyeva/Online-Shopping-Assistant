@@ -1,7 +1,7 @@
-namespace Application.Services;
-
 using Application.Interfaces;
 using Domain.Enums;
+
+namespace Application.Services;
 
 //TO DO: Add DTO to result, ets
 public class ParsingAppService : IOutfitParsingService
@@ -19,8 +19,6 @@ public class ParsingAppService : IOutfitParsingService
 
         var strategy = _parserFactory.GetStrategy(storeSource);
 
-        string rawResult = await strategy.ParseAsync(clothUrl, ct);
-
-        return rawResult;
+        return await Task.FromResult($"Stub result for strategy: {strategy.GetType().Name} (Store: {storeSource})");
     }
 }
