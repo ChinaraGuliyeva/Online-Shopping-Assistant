@@ -46,16 +46,18 @@ public class AiParserStrategy : IParserStrategy
         _outfitVisionService = outfitVisionService;
     }
 
-    public async Task<ParsedItem> ParseAsync(string url, CancellationToken ct = default)
+    public async Task<string> ParseAsync(string url, CancellationToken ct = default)
     {
         var rawAnalysis = await _outfitVisionService.AnalyzeProductFromUrlAsync(url, ct);
 
-        return new ParsedItem
-        {
-            Url = url,
-            Source = StoreSource.Unknown,
-            Title = "AI Pending Test",
-            Description = rawAnalysis?.ToString() ?? string.Empty
-        };
+        return rawAnalysis;
+
+        // return new ParsedItem
+        // {
+        //     Url = url,
+        //     Source = StoreSource.Unknown,
+        //     Title = "AI Pending Test",
+        //     Description = rawAnalysis?.ToString() ?? string.Empty
+        // };
     }
 }

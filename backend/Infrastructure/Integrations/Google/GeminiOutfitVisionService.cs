@@ -9,7 +9,7 @@ public class GeminiOutfitVisionService : IOutfitVisionService
 {
     private readonly GoogleAI _googleAi;
 
-    private const string ModelName = "gemini-2.5-flash";
+    private const string ModelName = "gemini-3.8-flash";
 
     public GeminiOutfitVisionService(IConfiguration configuration)
     {

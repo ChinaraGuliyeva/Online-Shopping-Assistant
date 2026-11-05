@@ -19,6 +19,6 @@ public class ParsingAppService : IOutfitParsingService
 
         var strategy = _parserFactory.GetStrategy(storeSource);
 
-        return await Task.FromResult($"Stub result for strategy: {strategy.GetType().Name} (Store: {storeSource})");
+        return await strategy.ParseAsync(clothUrl, ct);
     }
 }
