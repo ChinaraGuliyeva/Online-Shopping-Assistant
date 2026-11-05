@@ -1,7 +1,14 @@
 using Application;
 using Infrastructure;
+using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
+
+var configuration = new ConfigurationBuilder()
+    .SetBasePath(Directory.GetCurrentDirectory())
+    .AddJsonFile("appsettings.json", optional: true)
+    .AddUserSecrets<Program>()
+    .Build();
 
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
