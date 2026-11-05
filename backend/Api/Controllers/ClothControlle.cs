@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Application.Interfaces;
+using API.Dtos.Requests;
 
 namespace Api.Controllers;
 
@@ -14,12 +15,10 @@ public class ClothController : ControllerBase
         _parsingService = parsingService;
     }
 
-    [HttpPost("parse")]
-    public async Task<IActionResult> ParseOutfit(IFormFile file, CancellationToken ct)
+    [HttpPost]
+    public async Task<IActionResult> ParseOutfit([FromBody] ParseOutfitRequest request, CancellationToken ct)
     {
-        using var stream = file.OpenReadStream();
-
-        string result = await _parsingService.ProcessOutfitAsync(stream, file.ContentType, ct);
+        string result = await _parsingService.ProcessOutfitAsync(request.Url, ct);
 
         return Content(result, "application/json");
     }
