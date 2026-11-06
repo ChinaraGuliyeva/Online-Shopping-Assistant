@@ -3,7 +3,6 @@ using Domain.Enums;
 
 namespace Application.Interfaces;
 
-
 public interface IParserFactory
 {
     IParserStrategy GetStrategy(StoreSource source);

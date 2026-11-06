@@ -1,6 +1,5 @@
 using Application;
 using Infrastructure;
-using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +11,7 @@ var configuration = new ConfigurationBuilder()
 
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
+builder.Services.AddMemoryCache();
 
 builder.Services
     .AddApplication()

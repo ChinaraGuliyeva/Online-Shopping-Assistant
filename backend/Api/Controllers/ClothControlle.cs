@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Application.Interfaces;
+using Application.Models;
 using API.Dtos.Requests;
+using TaskStatus = Application.Enums.TaskStatus;
 
 namespace Api.Controllers;
 
@@ -8,18 +10,45 @@ namespace Api.Controllers;
 [Route("api/outfits")]
 public class ClothController : ControllerBase
 {
-    private readonly IOutfitParsingService _parsingService;
+    private readonly ITaskQueue _queue;
+    private readonly IParsingTaskRepository _repository;
 
-    public ClothController(IOutfitParsingService parsingService)
+    public ClothController(ITaskQueue queue, IParsingTaskRepository repository)
     {
-        _parsingService = parsingService;
+        _queue = queue;
+        _repository = repository;
     }
 
-    [HttpPost]
-    public async Task<IActionResult> ParseOutfit([FromBody] ParseOutfitRequest request, CancellationToken ct)
+    [HttpPost("parse")]
+    public async Task<IActionResult> ParseOutfit([FromBody] ParseOutfitRequest request)
     {
-        string result = await _parsingService.ProcessOutfitAsync(request.Url, ct);
+        var task = new ParsingTask(request.Url);
 
-        return Content(result, "application/json");
+        _repository.Save(task);
+        await _queue.QueueTaskAsync(task);
+
+        return Accepted(new { taskId = task.TaskId, message = "Parsing started in background" });
+    }
+
+    [HttpGet("status/{taskId}")]
+    public IActionResult GetStatus(string taskId)
+    {
+        var task = _repository.Get(taskId);
+        if (task == null)
+        {
+            return NotFound(new { message = "Task not found" });
+        }
+
+        if (task.Status == TaskStatus.Error)
+        {
+            return BadRequest(new { status = task.Status.ToString(), error = task.Error });
+        }
+
+        if (task.Status == TaskStatus.Completed)
+        {
+            return Content(task.Result!, "application/json");
+        }
+
+        return Ok(new { status = task.Status.ToString() });
     }
 }
